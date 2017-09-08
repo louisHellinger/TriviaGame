@@ -1,7 +1,6 @@
  
 $(document).ready(function(){
 
-
 var myQuestions = [
   {
     question: "1. Cher has appeared in more than one episode.",
@@ -11,6 +10,7 @@ var myQuestions = [
     },
     correctAnswer: "True"
   },
+
   {
     question: "2. Who did Rosario cheat on Jack with while they were married?",
     answers: {
@@ -35,14 +35,14 @@ var myQuestions = [
 
 
  {
-    question: "4. What was the name of Karen's horse?",
+    question: "4. What alias does Karen use when she wants to go unnoticed?",
     answers: {
-      a: "Sampson",
-      b: "Little Wonder",
-      c: "Lemar",
-      d: "Little Jack"
+      a: "Wanda Pepper",
+      b: "Princess Consuela Bananahammock",
+      c: "Anastasia Beaverhausen",
+      d: "Regina Badgerhöffer"
     },
-    correctAnswer: "Lemar"
+    correctAnswer: "Anastasia Beaverhausen"
   },
 
     {
@@ -81,7 +81,7 @@ var myQuestions = [
 
 
       {
-    question: "8.Grace's design company is called 'Designs By Grace'.",
+    question: "8. Grace's design company is called 'Designs By Grace'.",
     answers: {
       a: "True",
       b: "False"
@@ -89,7 +89,7 @@ var myQuestions = [
     correctAnswer: "False" //b
 },
 
-	{
+  {
     question: "9. Which famous British actress played Lyle's obnoxious daughter who disliked Karen?",
     answers: {
       a: "Minnie Driver",
@@ -101,27 +101,23 @@ var myQuestions = [
   },
 
   {
-    question: "10. What was the name of Jack's Bird?",
+    question: "10. Who was Karen's nemesis?",
     answers: {
-      a: "Guapo",
-      b: "Orion",
-      c: "Chi Chi",
-      d: "Jackie"
+      a: "Beverly Diane",
+      b: "Beverly Brian",
+      c: "Beverly Leslie",
+      d: "Beverly Hills"
     },
-    correctAnswer: "Guapo" //a
+    correctAnswer: "Beverly Leslie" //c
   }
-
 
 ];
 
 
-// $("#question").addClass("noShow");
-// $("#progress").addClass("noShow");
+//console.log(myQuestions);
+
 $("#startQuiz").click(resetGame);
 
-var quizContainer = $("#quiz");
-var resultsContainer = $("#results");
-var submitButton = $("#submit");
 
 var currentQuestion=" ";
 var currentAnswer= "" ;
@@ -130,78 +126,79 @@ var num = 0;
 var questionNumber = 0;
 var number = 0;
 var countdownTimer;
+var wrongCounter = 0;
+var rightCounter = 0;
+var missedCounter = 0;
 
- 
 
-function delay() {
-  setTimeout(function(){ 
-    //count = 2;
-    
 
-    if (questionNumber <= myQuestions.length) {
-      questionNumber ++;
-      resetGame();
-  } else {
-    alert("game over");
-
-  }
-
-  }, 3000);
-}
 
 
 function resetGame(){
+  if (questionNumber ===10) {
+    stopTime();
+    displayScore();
+    $("#progress").addClass("noShow");
+    $("#answerContainer").empty(); 
+    $("#question").addClass("noShow");
+
+
+  }
 
   //console.log("game will reset now");
   $("#progress").removeClass("noShow");
   $("#answerContainer").empty();  
   $("#question").removeClass("noShow");
   $("#answerContainer").removeClass("results");
-  $("#progress").removeClass("noShow");
 
 
   console.log("this is the question number :" + questionNumber);
-
+  gameTimer = setInterval(gameTime, 1000);
   loadQuestion();
+
      
 }
 
-// var countdownTimer;
 
-
-var count = 20;
+var count = 10;
 
 function gameTime() {
 
   count--;
   console.log(count);
 
- 
+    if (count === 0 ){
+      stopTime();
 
+    $("#answerContainer").empty();
+    $("#percent").empty();
 
-// === for a progress ==== //
-  percent = count * 5;
-
-  $("#percent").html("You have <bold>" + count + "</bold> seconds left.");
-  $("#bar").css("width", percent + "%");
-// === end of progess bar
-
-
-  if (count === 0 ){
     $("#progress").addClass("noShow");
-    wrongAnswer();
+    $("#answerContainer").append("<div class='results'>You ran out of time!</div>").addClass("results");
+    $("#answerContainer").append("<div class='results'>The correct answer is:</div>").addClass("results");
+    $("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
+        missedCounter ++;
+          delay();
     
-    stopTime();
-    
+ }
 
-  }
 
+
+// === for a progress bar ==== //
+  percent = count * 10;
+
+  $("#percent").html("You have <bold>" + count + "</bold> seconds left");
+  $("#bar").css("width", percent + "%");
+
+
+// === end of progess bar ==== //
  
 }
 
-function stopTime() {
+
+function stopTime(){
     clearInterval(gameTimer);
-    count = 20;
+    count = 10;
    
 }
 
@@ -209,47 +206,67 @@ function stopTime() {
 function wrongAnswer () {
 
         $("#answerContainer").empty();
-         $("#progress").addClass("noShow");
+        $("#percent").empty();
 
-         if (count <= 0) {
-        $("#answerContainer").append("<div class='results'>You ran out of time!</div>").addClass("results");
-
-        delay();
-        
-
-
-      } else {
+        $("#progress").addClass("noShow");
 
 
         $("#answerContainer").append("<div class='results'>Wrong Answer!</div>").addClass("results");
-        
-          delay();
-      
-      } 
-
 
         $("#answerContainer").append("<div class='results'>The correct answer is:</div>").addClass("results");
         $("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
 
-              
+
+          wrongCounter ++;
+        
+          delay();       
+             
 }
 
 
 
+function delay() {
+  setTimeout(function(){ 
 
-function loadQuestion() { 
+    if (questionNumber ===  10) {  
+
+      displayScore();
+
+      } else if (questionNumber <=myQuestions.length-1) {
+      questionNumber ++;
+      console.log("question number afer ++ " + questionNumber);
+      resetGame();
+
+  } 
+
+
+  }, 1000);
+}
+
+function displayScore(){
+        $("#question").empty();
+        $("#answerContainer").empty(); 
+
+        $("#answerContainer").append("wrong " + wrongCounter); 
+        $("#answerContainer").append("right " + rightCounter);
+        $("#answerContainer").append("missed " + missedCounter);  
+
+      //alert("at the end of the game, the score will appear");
+
+}
+
+function loadQuestion() {
+  console.log(myQuestions.length);
 
   //start timer
-   gameTimer = setInterval(gameTime, 1000);
+   
 
-
-
-
-  console.log("load question is working. This is question #" + questionNumber);
+  //console.log("load question is working. This is question #" + questionNumber);
 
   
   var answersArray = [myQuestions[questionNumber].answers.a, myQuestions[questionNumber].answers.b, myQuestions[questionNumber].answers.c, myQuestions[questionNumber].answers.d];
 
+  console.log(answersArray);
 
   //display question
   currentQuestion = myQuestions[questionNumber].question;
@@ -270,68 +287,62 @@ for (var i=0; i<answersArray.length;i++){
   if (letter != undefined) { 
 
     var questionButton = $("<button>");
-    questionButton.addClass("newAnswerDiv button");
-    questionButton.attr("data-value", letter);
-    questionButton.html(letter);
+        questionButton.addClass("newAnswerDiv button");
+        questionButton.attr("data-value", letter);
+        questionButton.html(letter);
 
     $("#answerContainer").append(questionButton);
-
 
   } 
   
  $("#progress").removeClass("noShow");
 
 
-  
 }
+
 
 //BUTTON CODE
 
 
-  $(".button").on("click", function() {
-    console.log("button clicked");
-  
-
+$(".button").on("click", function() {
+    //console.log("button clicked");
+      clearInterval(gameTimer);
       stopTime();
+
 
       var clicked = ($(this).attr("data-value"));
 
 
       if (clicked === currentAnswer) {
 
-          console.log("correct answer");
-          console.log("clicked answer " + clicked);
+          //console.log("correct answer");
+          //console.log("clicked answer " + clicked);
 
         $("#question").empty();
+        $("#percent").empty();
         $("#answerContainer").empty(); 
         $("#progress").addClass("noShow");      
         $("#answerContainer").append("<div class='results'>CORRECT!</div>").addClass("results");
+        rightCounter++;
 
-
-          delay();
+        delay();
 
         } else { 
           console.log("incorrect answer");
           console.log("clicked answer " + clicked + " " + currentAnswer);
-            $("#progress").addClass("noShow");
-            wrongAnswer();
-            
+          $("#progress").addClass("noShow");
+          
+          wrongAnswer();            
         }
 
+      
 });
-
-
-
-
 
 
 }
 
-//console.log("i'm at the end");
-
-//$("mainImage").load(initGame());
 
 
 
-});
+}); //Closing brackets for doc.ready
 

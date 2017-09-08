@@ -3,9 +3,17 @@ body, html {
 	padding: 0%;
 	font-family:Arial, sans-serif;
 	font-size:14px;
-	/*background-image: url("../images/pattern_texture1163.jpg");*/
-	background-size: 100%;
+	background-color:black;
 
+}
+
+body {
+
+	background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(white, black); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(white, black); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(white, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(white, black); /* Standard syntax (must be last) */
 
 }
 
@@ -13,17 +21,24 @@ div {
 	/*border: solid 1px yellow;*/
 }
 
+#mainContent h1 {
+	font-size:26px;
+	line-height:1.5;
+}
+
+h2 {
+	margin-top:10px;
+	font-size:20px;
+}
+
+
 #fullBackground {
 	margin:0%;
 	padding:0% 0% 2% 0%;
     height: 150%;
     min-height:100%;
     height:auto !important;
-    background: black; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(white, black); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(white, black); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(white, black); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(white, black); /* Standard syntax (must be last) */
+
 }
 
 
@@ -96,8 +111,9 @@ div {
 
 }
 
+
 .layout {
-	height:400px;
+	height:350px;
 	background-color:darkred;
 }
 
@@ -105,11 +121,11 @@ div {
 	/*margin-top:-10%;*/
 	/*border: solid 2px yellow;*/
 	float:right;
-	width:40%;
+	width:45%;
 	height:400px;
 	color:white;
-	font-size:20px;
-	margin:0 4% 0 0;
+	font-size:16px;
+	margin:0 3% 0 0;
 	
 }
 
@@ -124,16 +140,17 @@ div {
 
 #question, #answer {
 	border:inherit;
-	padding:2% 0;
+	padding:1% 0;
 }
 
 #question {
-	font-size:24px;
+	font-size:20px;
 	font-weight:bold;
 	line-height:1.25;
 	text-transform:uppercase;
-	margin-top:2%;
+	margin-top:1%;
 }
+
 
 #startQuiz {
 	padding:6px 15px;
@@ -142,34 +159,37 @@ div {
 	background-color: #000;
 	text-transform: uppercase;
 	margin-top:20px;
+	outline:none;
 }
+
 
 .newAnswerDiv {
 	
 	color: white;
 	width:90%;
-	padding:10px 0px;
+	padding:4px 0px;
+	margin-bottom:3px;
 	clear:both;
 	/*border:solid 1px yellow;*/
 	background-color: rgba(118, 158, 171, 0.1);
 	outline: none;
-	font-size:24px;
+	font-size:20px;
 	border:none;
-	
 	
 }
 
 
-
 .newAnswerDiv:hover {
-	background-color:rgba(255, 255, 255, 0.1);;
+	background-color:rgba(255, 255, 255, 0.2);;
 	cursor: pointer;
-
+	font-size:21px;
+	font-weight:bold;
+	outline-width:1px;
 	
 }
 
 .results {
-	margin:0px 0px 10px 0px;
+	margin:0px 0px 5px 0px;
 	height:40px;
 	font-size: 24px;
 }
@@ -183,7 +203,7 @@ div {
 	border-radius: 20px;
 	position: relative;
 	padding: 0px;
-	margin-top:8%;
+	margin-top:3%;
 	
 
 }
@@ -221,6 +241,7 @@ div {
  
 }
 
+
 .timerWidth {
 	width:100%;
 	/*border: 1px solid black;*/
@@ -231,7 +252,9 @@ div {
 	/*width:inherit;*/
 	/*border:1px solid yellow;*/
 	margin-top:2%;
-	line-height:2;
+	line-height:1.25;
+	width:100%;
+
 }
 
 
