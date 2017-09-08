@@ -237,7 +237,7 @@ function delay() {
 
   } 
 
-  }, 1000);
+  }, 3000);
 }
 
 
@@ -323,11 +323,11 @@ $(".button").on("click", function() {
           //console.log("correct answer");
           //console.log("clicked answer " + clicked);
 
-        $("#question").empty();
+        //$("#question").empty();
         $("#percent").empty();
         $("#answerContainer").empty(); 
         $("#progress").addClass("noShow");      
-        $("#answerContainer").append("<div class='results'>CORRECT!</div>").addClass("results");
+        $("#answerContainer").append("<div>CORRECT!</div>").addClass("scoreHeader");
         rightCounter++;
 
         delay();

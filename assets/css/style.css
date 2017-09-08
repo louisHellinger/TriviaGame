@@ -21,15 +21,17 @@ div {
 	/*border: solid 1px yellow;*/
 }
 
+h2 {
+	margin-top:10px;
+	font-size:20px;
+}
+
 #mainContent h1 {
 	font-size:26px;
 	line-height:1.5;
 }
 
-h2 {
-	margin-top:10px;
-	font-size:20px;
-}
+
 
 
 #fullBackground {
@@ -160,6 +162,7 @@ h2 {
 	text-transform: uppercase;
 	margin-top:20px;
 	outline:none;
+	cursor:pointer;
 }
 
 
@@ -190,7 +193,7 @@ h2 {
 
 .results {
 	margin:0px 0px 5px 0px;
-	height:40px;
+	padding: 3px 0px;
 	font-size: 24px;
 }
 
@@ -254,20 +257,15 @@ h2 {
 
 }
 
-#answerContainer {
-	/*width:inherit;*/
-	/*border:1px solid yellow;*/
-	margin-top:2%;
-	line-height:1.25;
-	width:100%;
 
-}
 
 .scoreHeader {
 	text-transform:uppercase;
+	font-weight:bold;
 	font-size:30px;
 	margin-bottom:20px;
 }
+
 
 .score {
 	
@@ -284,5 +282,16 @@ h2 {
 }
 
 .plainText {
+	margin-top:15px;
 	font-size: 16px;
+}
+
+#answerContainer {
+	/*width:inherit;*/
+	/*border:1px solid yellow;*/
+	/*margin-top:2%;*/
+	padding-top: 20px;
+	line-height:1;
+	width:100%;
+
 }
