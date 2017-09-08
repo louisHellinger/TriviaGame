@@ -136,7 +136,7 @@ var missedCounter = 0;
 
 
 function resetGame(){
-  if (questionNumber ===10) {
+  if (questionNumber === 9) {
     stopTime();
     displayScore();
     $("#progress").addClass("noShow");
@@ -152,7 +152,7 @@ function resetGame(){
   $("#answerContainer").removeClass("results");
 
 
-  console.log("this is the question number :" + questionNumber);
+  //console.log("this is the question number :" + questionNumber);
   gameTimer = setInterval(gameTime, 1000);
   loadQuestion();
 
@@ -160,12 +160,12 @@ function resetGame(){
 }
 
 
-var count = 10;
+var count = 20;
 
 function gameTime() {
 
   count--;
-  console.log(count);
+  //console.log(count);
 
     if (count === 0 ){
       stopTime();
@@ -184,7 +184,7 @@ function gameTime() {
 
 
 // === for a progress bar ==== //
-  percent = count * 10;
+  percent = count * 5;
 
   $("#percent").html("You have <bold>" + count + "</bold> seconds left");
   $("#bar").css("width", percent + "%");
@@ -197,7 +197,7 @@ function gameTime() {
 
 function stopTime(){
     clearInterval(gameTimer);
-    count = 10;
+    count = 20;
    
 }
 
@@ -225,7 +225,7 @@ function wrongAnswer() {
 function delay() {
   setTimeout(function(){ 
 
-    if (questionNumber ===  10) {  
+    if (questionNumber ===  9) {  
 
       displayScore();
 
@@ -246,13 +246,15 @@ function displayScore(){
         $("#answerContainer").empty(); 
 
         $("#answerContainer")
-        .append("<div class='scoreheader'>Here's how you did: </div>");
+        .append("<div class='scoreHeader'>Here's how you did: </div>");
         
        $("#answerContainer").append("<div class='score'>Wrong " + wrongCounter + "</div>");
 
         $("#answerContainer").append("<div class='score'>right " + rightCounter+ "</div>");
 
         $("#answerContainer").append("<div class='score'>missed " + missedCounter+ "</div>");
+
+        $("#answerContainer").append("<div class='plainText'>Tune in on September 28 @ 9PM EST for the season Premiere!</div>");
 
       //alert("at the end of the game, the score will appear");
 
