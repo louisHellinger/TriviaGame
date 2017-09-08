@@ -46,7 +46,7 @@ var myQuestions = [
       d: "Regina Badgerhöffer"
     },
     correctAnswer: "Anastasia Beaverhausen",
-    image: "assets/images/anastasia.jpg"
+    image: "assets/images/Anastasia.jpg"
   },
 
     {
