@@ -21,7 +21,7 @@ var myQuestions = [
       d: "Stan"
     },
     correctAnswer: "Gardener",
-    image: "assets/images/Rosario.jpg"
+    image: "assets/images/rosario.jpg"
   },
 
   {
@@ -33,7 +33,7 @@ var myQuestions = [
       d: "Karen"
     },
     correctAnswer: "Karen",
-    image: "assets/images/Madonna.jpg"
+    image: "assets/images/madonna.jpg"
   },
 
 
@@ -46,7 +46,7 @@ var myQuestions = [
       d: "Regina Badgerhöffer"
     },
     correctAnswer: "Anastasia Beaverhausen",
-    image: "assets/images/Anastasia.jpg"
+    image: "assets/images/anastasia.jpg"
   },
 
     {
@@ -58,7 +58,7 @@ var myQuestions = [
       d: "Necrophiliac"
     },
     correctAnswer: "Gay", //b
-    image: "assets/images/Rosie.jpg"
+    image: "assets/images/rosie.jpg"
   },
 
 
