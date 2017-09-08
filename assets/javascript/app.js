@@ -126,6 +126,7 @@ var num = 0;
 var questionNumber = 0;
 var number = 0;
 var countdownTimer;
+
 var wrongCounter = 0;
 var rightCounter = 0;
 var missedCounter = 0;
@@ -141,7 +142,6 @@ function resetGame(){
     $("#progress").addClass("noShow");
     $("#answerContainer").empty(); 
     $("#question").addClass("noShow");
-
 
   }
 
@@ -183,7 +183,6 @@ function gameTime() {
  }
 
 
-
 // === for a progress bar ==== //
   percent = count * 10;
 
@@ -203,11 +202,10 @@ function stopTime(){
 }
 
 
-function wrongAnswer () {
+function wrongAnswer() {
 
         $("#answerContainer").empty();
         $("#percent").empty();
-
         $("#progress").addClass("noShow");
 
 
@@ -215,7 +213,6 @@ function wrongAnswer () {
 
         $("#answerContainer").append("<div class='results'>The correct answer is:</div>").addClass("results");
         $("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
-
 
           wrongCounter ++;
         
@@ -233,23 +230,29 @@ function delay() {
       displayScore();
 
       } else if (questionNumber <=myQuestions.length-1) {
+      console.log("increments number after delay");
       questionNumber ++;
       console.log("question number afer ++ " + questionNumber);
       resetGame();
 
   } 
 
-
   }, 1000);
 }
+
 
 function displayScore(){
         $("#question").empty();
         $("#answerContainer").empty(); 
 
-        $("#answerContainer").append("wrong " + wrongCounter); 
-        $("#answerContainer").append("right " + rightCounter);
-        $("#answerContainer").append("missed " + missedCounter);  
+        $("#answerContainer")
+        .append("<div class='scoreheader'>Here's how you did: </div>");
+        
+       $("#answerContainer").append("<div class='score'>Wrong " + wrongCounter + "</div>");
+
+        $("#answerContainer").append("<div class='score'>right " + rightCounter+ "</div>");
+
+        $("#answerContainer").append("<div class='score'>missed " + missedCounter+ "</div>");
 
       //alert("at the end of the game, the score will appear");
 
@@ -331,7 +334,6 @@ $(".button").on("click", function() {
           console.log("incorrect answer");
           console.log("clicked answer " + clicked + " " + currentAnswer);
           $("#progress").addClass("noShow");
-          
           wrongAnswer();            
         }
 
