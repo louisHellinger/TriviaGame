@@ -22,7 +22,7 @@ div {
 }
 
 h2 {
-	margin-top:10px;
+	margin-top:20px;
 	font-size:20px;
 }
 
@@ -103,7 +103,7 @@ h2 {
 #mainImage {
 	width:550px;
 	float:left;
-	margin:140px 0% 0% -6%;
+	margin:160px 0% 0% -6%;
 	
 	-ms-transform: rotate(-6deg); 
     -webkit-transform: rotate(-6deg);
@@ -123,11 +123,12 @@ h2 {
 	/*margin-top:-10%;*/
 	/*border: solid 2px yellow;*/
 	float:right;
-	width:45%;
-	height:400px;
+	width:48%;
+	height:440px;
+	overflow:auto;
 	color:white;
 	font-size:16px;
-	margin:0 3% 0 0;
+	margin:0 2% 0 0;
 	
 }
 
@@ -153,6 +154,14 @@ h2 {
 	margin-top:1%;
 }
 
+.correct {
+	font-size:28px;
+	font-weight:bold;
+	line-height:1.25;
+	text-transform:uppercase;
+	margin:-15px 0px 10px 0px;
+}
+
 
 #startQuiz {
 	padding:6px 15px;
@@ -176,7 +185,7 @@ h2 {
 	/*border:solid 1px yellow;*/
 	background-color: rgba(118, 158, 171, 0.1);
 	outline: none;
-	font-size:20px;
+	font-size:22px;
 	border:none;
 	
 }
@@ -185,22 +194,25 @@ h2 {
 .newAnswerDiv:hover {
 	background-color:rgba(255, 255, 255, 0.2);;
 	cursor: pointer;
-	font-size:21px;
-	font-weight:bold;
+	font-size:23px;
+	/*font-weight:bold;*/
 	outline-width:1px;
 	
 }
 
 .results {
-	margin:0px 0px 5px 0px;
+	margin:0px 0px 0px 0px;
 	padding: 3px 0px;
-	font-size: 24px;
+	font-size: 20px;
+
+
 }
 
 .resultsHeader {
 	
 	font-size:28px;
 	margin-bottom:20px;
+	margin-top:-30px;
 }
 
 
@@ -221,6 +233,8 @@ h2 {
 .noShow {
 	visibility: hidden;
 	height:0px;
+	margin-top:-80px;
+
 }
 
 
@@ -260,9 +274,9 @@ h2 {
 
 
 .scoreHeader {
-	text-transform:uppercase;
+	text-transform: uppercase;
 	font-weight:bold;
-	font-size:30px;
+	font-size:24px;
 	margin-bottom:20px;
 }
 
@@ -281,17 +295,33 @@ h2 {
 	text-transform:uppercase;
 }
 
+.snottyComment {
+	font-size:23px;
+	font-style:italic;
+	margin:-15px 0px 10px 0px;
+}
+
 .plainText {
+	font-size:18px;
+	font-weight:normal;
 	margin-top:15px;
-	font-size: 16px;
+	font-size: 18px;
+}
+
+#answerIMG{
+	margin-top:5px;
+	height:300px;
+
+
 }
 
 #answerContainer {
 	/*width:inherit;*/
 	/*border:1px solid yellow;*/
-	/*margin-top:2%;*/
-	padding-top: 20px;
+	margin-top:4px;
+	padding-top: 10px;
 	line-height:1;
 	width:100%;
+	/*border: 1px solid white;*/
 
 }

@@ -8,7 +8,8 @@ var myQuestions = [
       a: "True",
       b: "False",
     },
-    correctAnswer: "True"
+    correctAnswer: "True",
+    image: "assets/images/Cher.gif"
   },
 
   {
@@ -19,7 +20,8 @@ var myQuestions = [
       c: "Back-Up Pharmacist",
       d: "Stan"
     },
-    correctAnswer: "Gardener"
+    correctAnswer: "Gardener",
+    image: "assets/images/Rosario.jpg"
   },
 
   {
@@ -30,7 +32,8 @@ var myQuestions = [
       c: "Jack",
       d: "Karen"
     },
-    correctAnswer: "Karen"
+    correctAnswer: "Karen",
+    image: "assets/images/Madonna.jpg"
   },
 
 
@@ -42,7 +45,8 @@ var myQuestions = [
       c: "Anastasia Beaverhausen",
       d: "Regina Badgerhöffer"
     },
-    correctAnswer: "Anastasia Beaverhausen"
+    correctAnswer: "Anastasia Beaverhausen",
+    image: "assets/images/anastasia.jpg"
   },
 
     {
@@ -53,7 +57,8 @@ var myQuestions = [
       c: "A moor-man",
       d: "Necrophiliac"
     },
-    correctAnswer: "Gay" //b
+    correctAnswer: "Gay", //b
+    image: "assets/images/Rosie.jpg"
   },
 
 
@@ -65,7 +70,8 @@ var myQuestions = [
       c: "Painkiller",
       d: "Anti-Depressant"
     },
-    correctAnswer: "Painkiller" //c
+    correctAnswer: "Painkiller", //c
+    image: "assets/images/Karen.gif"
   },
 
     {
@@ -76,7 +82,8 @@ var myQuestions = [
       c: "Elvis Presley",
       d: "Ricky Martin"
     },
-    correctAnswer: "Ricky Martin"//d
+    correctAnswer: "Ricky Martin",//d
+    image: "assets/images/Jack.gif"
   },
 
 
@@ -86,7 +93,8 @@ var myQuestions = [
       a: "True",
       b: "False"
     },
-    correctAnswer: "False" //b
+    correctAnswer: "False", //b
+    image: "assets/images/Grace.gif"
 },
 
   {
@@ -97,7 +105,8 @@ var myQuestions = [
       c: "Kelly Brooke",
       d: "Tamzin Outhwaite"
     },
-    correctAnswer: "Minnie Driver" //a
+    correctAnswer: "Minnie Driver", //a
+    image: "assets/images/Minnie.gif"
   },
 
   {
@@ -108,7 +117,8 @@ var myQuestions = [
       c: "Beverly Leslie",
       d: "Beverly Hills"
     },
-    correctAnswer: "Beverly Leslie" //c
+    correctAnswer: "Beverly Leslie", //c
+    image: "assets/images/beverlyLeslie.jpg"
   }
 
 ];
@@ -149,7 +159,6 @@ function resetGame(){
   $("#progress").removeClass("noShow");
   $("#answerContainer").empty();  
   $("#question").removeClass("noShow");
-  $("#answerContainer").removeClass("results");
 
 
   //console.log("this is the question number :" + questionNumber);
@@ -160,7 +169,7 @@ function resetGame(){
 }
 
 
-var count = 20;
+var count = 21;
 
 function gameTime() {
 
@@ -170,14 +179,33 @@ function gameTime() {
     if (count === 0 ){
       stopTime();
 
+      missedCounter ++;
+
     $("#answerContainer").empty();
     $("#percent").empty();
 
     $("#progress").addClass("noShow");
-    $("#answerContainer").append("<div class='results'>You ran out of time!</div>").addClass("results");
-    $("#answerContainer").append("<div class='results'>The correct answer is:</div>").addClass("results");
-    $("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
-        missedCounter ++;
+    $("#question").addClass("noShow");
+
+      if (missedCounter === 1) {
+            $("#answerContainer").append("<div class='snottyComment'>You ran out of time...<br>Are you Ok?</div>");
+
+          } else if (missedCounter === 2) { $("#answerContainer").append("<div class='snottyComment'>You ran out of time... <br> Did you fall asleep?</div>");
+
+
+          } else { $("#answerContainer").append("<div class='snottyComment'>You ran out of time... AGAIN!</div>");}
+
+             //load Image
+         var img = $("<img = id='answerIMG'>");
+         imageName = myQuestions[questionNumber].image
+         img.attr("src", imageName)
+         $("#answerContainer").append(img);
+
+
+    
+        $("#answerContainer").append("<div class='results'>The correct answer is: <br>" + currentAnswer + "</div>");
+
+
           delay();
     
  }
@@ -197,24 +225,43 @@ function gameTime() {
 
 function stopTime(){
     clearInterval(gameTimer);
-    count = 20;
+    count = 21;
    
 }
 
 
 function wrongAnswer() {
+        wrongCounter ++;
 
         $("#answerContainer").empty();
+        $("#question").addClass("noShow");
         $("#percent").empty();
         $("#progress").addClass("noShow");
+         
 
+          if (wrongCounter === 1) {$("#answerContainer").append("<div class='snottyComment'>Wrong Answer<br>(PS, That was an easy one.)</div>");
+        }  else if (wrongCounter === 2) {
+            $("#answerContainer").append("<div class='snottyComment'>Wrong Answer<br>Did you even watch this show?</div>");
 
-        $("#answerContainer").append("<div class='results'>Wrong Answer!</div>").addClass("results");
+          } else if (wrongCounter === 4) {
+            $("#answerContainer").append("<div class='snottyComment'>Wrong Answer<br>Maybe you should start binge-watching.</div>");
 
-        $("#answerContainer").append("<div class='results'>The correct answer is:</div>").addClass("results");
-        $("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
+          } else { $("#answerContainer").append("<div class='snottyComment'>Wrong Again.</div>")
+        }
 
-          wrongCounter ++;
+        //load Image
+         var img = $("<img = id='answerIMG'>");
+         imageName = myQuestions[questionNumber].image
+         img.attr("src", imageName)
+         $("#answerContainer").append(img);
+          
+
+        $("#answerContainer").append("<div class='results'>The correct answer is: <br>" + currentAnswer +"</div>");
+        
+
+        //$("#answerContainer").append("<div class='results'>" + currentAnswer + "</div>").addClass("results");
+
+     
         
           delay();       
              
@@ -242,21 +289,33 @@ function delay() {
 
 
 function displayScore(){
-        $("#question").empty();
         $("#answerContainer").empty(); 
-
-        $("#answerContainer")
-        .append("<div class='scoreHeader'>Here's how you did: </div>");
+        $("#question").addClass("noshow");
         
-       $("#answerContainer").append("<div class='score'>Wrong " + wrongCounter + "</div>");
 
-        $("#answerContainer").append("<div class='score'>right " + rightCounter+ "</div>");
+        if (rightCounter === 10) { $("#answerContainer").append("<div class='scoreHeader'>PERFECT SCORE! <br>You are a SUPER FAN!</div>");
+
+        } else if ( rightCounter >= 6) {$("#answerContainer").append("<div class='scoreHeader'>YOU DID GREAT!<br> Here's your Results:</div>");
+
+      }else if ( rightCounter <= 10) {$("#answerContainer").append("<div class='scoreHeader'>You only got<br>" + rightCounter + " out of 10 correct. <br> Start binge-watching now! </div>");
+
+
+      } else { $("#answerContainer").append("<div class='scoreHeader'>Here's how you did: </div>");} ;
+
+
+
+       $("#answerContainer").append("<div class='score'>right " + rightCounter+ "</div>");
+        
+       $("#answerContainer").append("<div class='score'>Wrong " + wrongCounter + "</div>");     
 
         $("#answerContainer").append("<div class='score'>missed " + missedCounter+ "</div>");
 
-        $("#answerContainer").append("<div class='plainText'>Tune in on September 28 @ 9PM EST for the season Premiere!</div>");
+        $("#answerContainer").append("<div class='plainText'>Tune in on September 28 @ 9PM EST <br>for the season Premiere!</div>");
 
       //alert("at the end of the game, the score will appear");
+
+      $("#startQuiz").click(resetGame);
+
 
 }
 
@@ -326,15 +385,23 @@ $(".button").on("click", function() {
         //$("#question").empty();
         $("#percent").empty();
         $("#answerContainer").empty(); 
+        $("#question").addClass("noShow");
         $("#progress").addClass("noShow");      
-        $("#answerContainer").append("<div>CORRECT!</div>").addClass("scoreHeader");
+        $("#answerContainer").append("<div>THAT'S CORRECT!</div>").addClass("correct");
+         
+         //load Image
+         var img = $("<img = id='answerIMG'>");
+         imageName = myQuestions[questionNumber].image
+         img.attr("src", imageName)
+         $("#answerContainer").append(img);
+
         rightCounter++;
 
         delay();
 
         } else { 
-          console.log("incorrect answer");
-          console.log("clicked answer " + clicked + " " + currentAnswer);
+          //console.log("incorrect answer");
+          //console.log("clicked answer " + clicked + " " + currentAnswer);
           $("#progress").addClass("noShow");
           wrongAnswer();            
         }
